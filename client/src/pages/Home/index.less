@@ -1,0 +1,267 @@
+
+
+.Home{
+    width:1200px;
+    margin:0 auto;
+    :global{
+        .ant-carousel .slick-slide {
+            text-align: center;
+            height: 420px;
+            line-height: 420px;
+            background: #e2e2e2;
+            overflow: hidden;
+          }
+          
+          .ant-carousel .slick-slide h3 {
+            color: #fff;
+          }
+    }
+    
+
+    .carousel{
+        position: relative;
+        box-shadow: 0 1px 3px rgba(27,95,160,.1);
+
+        .imgDes{
+            width:344px;
+            height: 100%;
+            padding:60px 30px 50px;
+            position: absolute;
+            background: rgba(255,255,255,.8);
+            top:0;
+            right:0;
+
+            .desTab{
+                padding:5px 14px;
+                background:#268372;
+                color:#fff;
+                font-size: 14px;
+            }
+
+            .desTitle{
+                padding:15px 0;
+                position: relative;
+                font-weight: normal;
+                margin-bottom: 20px;
+                line-height: 28px;
+                font-size: 22px;
+                border-bottom: 1px solid #ccc;
+            
+                :before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    bottom: -2px;
+                    width: 45px;
+                    height: 3px;
+                    background: #268372;
+                }
+            }
+
+            .acticleData{
+                display: flex;
+                color: #999;
+
+                div{
+                    margin-right:16px;
+                }
+
+                i{
+                    margin-right:6px;
+                }
+            }
+
+            .acticleDetail{
+                margin-top:12px;
+                -webkit-line-clamp: 4;
+                display: -webkit-box;
+                /* autoprefixer: off */
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            button{
+                float: right;
+                margin:10px 6px;
+                border-radius: 0px;
+                border:none;
+                background-color: #282828;
+
+                &:hover{
+                    background-color: #ea6f5a;
+                }
+            }
+
+        }
+    }
+
+    .content{
+        display: flex;
+        
+        .left{
+            height: 100%;
+        }
+        .leftContent{
+            background: white;
+            padding:24px 0;
+            margin:12px 6px 0 0;
+            box-shadow: 0 1px 3px rgba(27,95,160,.1);
+
+            .artItem{
+                display: flex;
+                padding:24px;
+                &:hover{
+                    background: #f9fafb;
+                }
+
+                .artInfo{
+                    flex: 1;
+                    padding-right: 16px;
+                    position: relative;
+                    .artTitle{
+                        font-size: 18px;
+                        color:#141414;
+                        cursor: pointer;
+                        font-weight: 400;
+                    }
+
+                    .artShort{
+                        -webkit-line-clamp: 2;
+                        display: -webkit-box;
+                        /* autoprefixer: off */
+                        -webkit-box-orient: vertical;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        color:#828A8A;
+                    }
+
+                    .tagTime{
+                        width: 100%;
+                        padding-right: 16px;
+                        position: absolute;
+                        bottom: 0px;
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        
+                    }
+
+                }
+
+                .imgBorder{
+                    width: 210px;
+                    
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 3px;
+                    
+                    img{
+                        //max-width: 100%;
+                        height: 156px;
+                        
+                    }
+                }
+
+            }
+
+        }
+        .right{
+            height: 100%;
+
+            .rightContent{
+                height: 100%;
+                
+                margin:12px 0 0 6px;
+                box-shadow: 0 1px 3px rgba(27,95,160,.1);
+
+                .hotArt{
+                    padding:24px 24px 36px;
+                    background: white;
+                    .title{
+                        font-size: 24px;
+                    }
+
+                    .dateRadio{
+                        margin: 6px 0 10px 52px;
+
+                        &:first-child{
+                            border-left: none;
+                        }
+                        &:last-child{
+                            border-right: none;
+                        }
+                    }
+
+                    .hotItem{
+                        display: flex;
+                        margin-top: 12px;
+                        .num{
+                            display: inline-block;
+                            width: 24px;
+                            height: 16px; 
+                            line-height: 16px;
+                            border: 1px solid #268372; 
+                            font-size: 12px;
+                            margin: 4px 10px 0 0;
+                            text-align: center;
+                            border-radius: 3px;
+                            &:hover{
+                                background: #268372;
+                                color:white;
+                            }
+                        }
+
+                        .hotTitle{
+                            line-height: 24px;
+                        }
+                    }
+
+                }
+
+
+                .hotTags{
+                    margin-top:12px;
+                    padding:24px 24px 36px;
+                    background: white;
+                    .title{
+                        font-size: 24px;
+                    }
+
+                    .itemTag{
+                        margin: 6px 16px 6px 0;
+                    }
+
+                }
+
+                .hotConnect{
+                    margin-top:16px;
+                    padding:24px 24px 36px;
+                    background: white;
+                    .title{
+                        font-size: 24px;
+                    }
+
+                    .ways{
+                        display: flex;
+                        margin-top:36px;
+                        justify-content: space-around;
+                        .way{
+                            font-size: 36px;
+                            color:#268372;
+                        }
+                    }
+                }
+
+
+            }
+        }
+        
+    }
+
+
+}
+
