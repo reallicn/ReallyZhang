@@ -3,6 +3,8 @@ import os from 'os';
 import slash from 'slash2';
 import defaultSettings from './defaultSettings';
 import webpackPlugin from './plugin.config';
+import pageRoutes from './router.config';
+
 const { pwa, primaryColor } = defaultSettings; // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 
@@ -96,98 +98,19 @@ export default {
   },
   devtool: ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION ? 'source-map' : false,
   // 路由配置
-  routes: [
-    {
-      path: '/user',
-      component: '../layouts/UserLayout',
-      // routes:[
-      //   {
-      //     path: '/user/login',
-      //     component: './Welcome',
-      //   },
-      //   {
-      //     path: '/user/register',
-      //     component: './Welcome',
-      //   },
-      // ]
-    },
-    {
-      path: '/',
-      component: '../layouts/BasicLayout',
-      // Routes: ['src/pages/Authorized'],
-      // authority: ['admin', 'user'],
-      routes: [
-        {
-          path:'/',
-          redirect:'/main/home'
-        },
-        {
-          path:'/main',
-          redirect:'/main/home'
-        },
-        {
-          path: '/main/home',
-          name: '首页',
-          //icon: 'smile',
-          component: './Home',
-        },
-        {
-          path: '/main/blog',
-          name: '技术博客',
-          //icon: 'smile',
-          component: './Blog',
-        },
-        {
-          path: '/main/blog/detail',
-          //name: '技术博客',
-          //icon: 'smile',
-          component: './Blog/Detail',
-        },
-        {
-          path: '/main/idea',
-          name: '创意共享',
-          //icon: 'smile',
-          component: './Idea',
-        },
-        {
-          path: '/main/pdf',
-          name: 'PDF阅读',
-          //icon: 'smile',
-          component: './Pdf',
-        },
-        {
-          path: '/main/video',
-          name: '视频教程',
-          //icon: 'smile',
-          component: './Video',
-        },
-        {
-          path: '/main/real',
-          name: '生活真相',
-          //icon: 'smile',
-          component: './Real',
-        },
-        {
-          path: '/main/about',
-          name: '关于我',
-          //icon: 'smile',
-          component: './About',
-        },
-      ],
-    },
-  ],
+  routes: pageRoutes,
   // Theme for antd
   // https://ant.design/docs/react/customize-theme-cn
   theme: {
     'primary-color': primaryColor,
   },
-  // proxy: {
-  //   '/server/api/': {
-  //     target: 'https://preview.pro.ant.design/',
-  //     changeOrigin: true,
-  //     pathRewrite: { '^/server': '' },
-  //   },
-  // },
+  proxy: {
+    '/api/': {
+      target: 'http://localhost:8099/',
+      changeOrigin: true,
+      pathRewrite: { '^/server': '' },
+    },
+  },
   ignoreMomentLocale: true,
   lessLoaderOptions: {
     javascriptEnabled: true,

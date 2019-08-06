@@ -9,10 +9,19 @@ var Schema =mongoose.Schema;
  */
 module.exports=new Schema({
 
+    registerType:String,
+
+    phone:String,
+
     username:String,
 
-    password:String
+    email:String,
 
+    password:String,
 
+    isAdmin:{
+        type:Boolean,
+        default:false
+    }
 
 });

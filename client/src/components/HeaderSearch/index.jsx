@@ -3,6 +3,7 @@ import { Input, Icon, AutoComplete } from 'antd';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import styles from './index.less';
+
 export default class HeaderSearch extends Component {
   static defaultProps = {
     defaultActiveFirstOption: false,
@@ -12,7 +13,7 @@ export default class HeaderSearch extends Component {
     className: '',
     placeholder: '',
     dataSource: [],
-    defaultOpen: false,
+    defaultOpen: true,
     onVisibleChange: () => {},
   };
 
@@ -98,7 +99,8 @@ export default class HeaderSearch extends Component {
 
   render() {
     const { className, placeholder, open, ...restProps } = this.props;
-    const { searchMode, value } = this.state;
+    const { value } = this.state;
+    const searchMode=true;
     delete restProps.defaultOpen; // for rc-select not affected
 
     const inputClass = classNames(styles.input, {

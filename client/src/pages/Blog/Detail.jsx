@@ -17,10 +17,10 @@ class Detail extends Component {
 
 	componentDidMount() {
 		const { dispatch } = this.props;
-		dispatch({
-			type: 'home/getCarouselList',
-			payload: {},
-		});
+		// dispatch({
+		// 	type: 'home/getCarouselList',
+		// 	payload: {},
+		// });
 
 	}
 
