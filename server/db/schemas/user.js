@@ -9,6 +9,11 @@ var Schema =mongoose.Schema;
  */
 module.exports=new Schema({
 
+    avatar:{
+        type:String,
+        default:'https://pic2.zhimg.com/v2-4e0e8def963aa65c3b73d92ee4603e9b_is.jpg'
+    },
+
     registerType:String,
 
     phone:String,

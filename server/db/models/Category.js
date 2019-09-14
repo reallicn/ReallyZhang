@@ -1,9 +1,11 @@
-
+/**
+ * 文章分类
+ */
 
 var mongoose = require('mongoose');
 
 
-var categorySchema = require('../schemas/categories');
+var categorySchema = require('../schemas/category');
 
 
 module.exports=mongoose.model('Category',categorySchema);

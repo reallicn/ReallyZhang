@@ -1,6 +1,21 @@
 
 export default [
   {
+    path: '/page/write',
+    component: '../layouts/BlankLayout',
+    routes:[
+      {
+        path:'/page/write',
+        redirect:'/page/write/blog'
+      },
+      {
+        path: '/page/write/blog',
+        component: './Blog/Write',
+      },
+
+    ]
+  },
+  {
     path: '/page/user',
     component: '../layouts/UserLayout',
     routes:[
@@ -40,7 +55,7 @@ export default [
         component: './Blog',
       },
       {
-        path: '/page/main/blog/detail',
+        path: '/page/main/blog/detail/:id',
         component: './Blog/Detail',
       },
       {

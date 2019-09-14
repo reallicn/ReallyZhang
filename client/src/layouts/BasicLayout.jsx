@@ -12,6 +12,7 @@ import { formatMessage } from 'umi-plugin-react/locale';
 import { isAntDesignPro } from '@/utils/utils';
 import { BasicLayout as ProLayoutComponents } from '@ant-design/pro-layout';
 import Link from 'umi/link';
+import { getCookies } from '@/utils/brower';
 
 /**
  * use Authorized check all menu item
@@ -32,16 +33,16 @@ const footerRender = (_, defaultDom) => {
     <>
       {defaultDom}
       <div
-        style={{
-          padding: '0px 24px 24px',
-          textAlign: 'center',
-        }}
+          style={{
+            padding: '0px 24px 24px',
+            textAlign: 'center',
+          }}
       >
-        <a href="https://www.netlify.com" target="_blank">
+        <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">
           <img
-            src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"
-            width="82px"
-            alt="netlify logo"
+              src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"
+              width="82px"
+              alt="netlify logo"
           />
         </a>
       </div>
@@ -78,29 +79,29 @@ const BasicLayout = props => {
 
   return (
     <ProLayoutComponents
-      logo={logo}
-      onCollapse={handleMenuCollapse}
-      menuItemRender={(menuItemProps, defaultDom) => {
-        return <Link to={menuItemProps.path}>{defaultDom}</Link>;
-      }}
-      breadcrumbRender={(routers = []) => {
-        return [
-          {
-            path: '/',
-            breadcrumbName: formatMessage({
-              id: 'menu.home',
-              defaultMessage: 'Home',
-            }),
-          },
-          ...routers,
-        ];
-      }}
-      footerRender={footerRender}
-      menuDataRender={menuDataRender}
-      formatMessage={formatMessage}
-      rightContentRender={rightProps => <RightContent {...rightProps} />}
-      {...props}
-      {...settings}
+        logo={logo}
+        onCollapse={handleMenuCollapse}
+        menuItemRender={(menuItemProps, defaultDom) => {
+          return <Link to={menuItemProps.path}>{defaultDom}</Link>;
+        }}
+        breadcrumbRender={(routers = []) => {
+          return [
+            {
+              path: '/',
+              breadcrumbName: formatMessage({
+                id: 'menu.home',
+                defaultMessage: 'Home',
+              }),
+            },
+            ...routers,
+          ];
+        }}
+        footerRender={footerRender}
+        menuDataRender={menuDataRender}
+        formatMessage={formatMessage}
+        rightContentRender={rightProps => <RightContent {...rightProps} />}
+        {...props}
+        {...settings}
     >
       {children}
     </ProLayoutComponents>

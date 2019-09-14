@@ -9,19 +9,19 @@ var mongoose =require('mongoose');
 module.exports=new mongoose.Schema({
 
     //关联字段
-    category:{
+    categoryId:{
       type:mongoose.Schema.Types.ObjectId,
       //引用
       ref:'Category'
     },
-    user:{
+    userId:{
         type:mongoose.Schema.Types.ObjectId,
         //引用
         ref:'User'
     },
-    addTime:{
-      type:Date,
-      default:new Date()
+    createTime:{
+      type:Number,
+      default:new Date().getTime()
     },
     read:{
         type:Number,
@@ -37,7 +37,15 @@ module.exports=new mongoose.Schema({
         default:''
     },
 
-    //分类名称
-    name:String
+    short:{
+        type:String,
+        default:''
+    },
+    face:{
+        type:String,
+        default:''
+    },
+
+    
 
 });

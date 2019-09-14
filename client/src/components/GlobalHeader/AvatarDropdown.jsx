@@ -10,66 +10,68 @@ class AvatarDropdown extends React.Component {
   onMenuClick = event => {
     const { key } = event;
 
-    if (key === 'logout') {
-      const { dispatch } = this.props;
-
-      if (dispatch) {
+    const { dispatch } = this.props;
+    switch (key) {
+      case 'logout':
         dispatch({
-          type: 'login/logout',
+          type: 'user/logout',
         });
-      }
-
-      return;
+        break;
+      case 'center':
+        break;
+      case 'write':
+        router.push('/page/write/blog');
+        break;
+      default:
+        break;
     }
 
-    router.push(`/account/${key}`);
   };
 
   render() {
     const { currentUser = {}, menu } = this.props;
-
-    if (!menu) {
-      return (
-        <span className={`${styles.action} ${styles.account}`}>
-          <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
-          <span className={styles.name}>{currentUser.name}</span>
-        </span>
-      );
-    }
+    console.log('currentUser', currentUser);
+    // if (!menu) {
+    //   return (
+    //     <span className={`${styles.action} ${styles.account}`}>
+    //       <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
+    //       <span className={styles.name}>{currentUser.username}</span>
+    //     </span>
+    //   );
+    // }
 
     const menuHeaderDropdown = (
       <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>
+        <Menu.Item key="write">
+          <Icon type="edit" />
+          写文章
+        </Menu.Item>
         <Menu.Item key="center">
           <Icon type="user" />
           <FormattedMessage id="menu.account.center" defaultMessage="account center" />
         </Menu.Item>
-        <Menu.Item key="settings">
-          <Icon type="setting" />
-          <FormattedMessage id="menu.account.settings" defaultMessage="account settings" />
-        </Menu.Item>
-        <Menu.Divider />
         <Menu.Item key="logout">
           <Icon type="logout" />
           <FormattedMessage id="menu.account.logout" defaultMessage="logout" />
         </Menu.Item>
       </Menu>
     );
-    return currentUser && currentUser.name ? (
+    return currentUser && currentUser.username ? (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
           <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
-          <span className={styles.name}>{currentUser.name}</span>
+          <span style={{ display: 'inline-block', maxWidth: 50 }} className={styles.name}>{currentUser.username}</span>
         </span>
       </HeaderDropdown>
     ) : (
-      <Spin
-        size="small"
-        style={{
-          marginLeft: 8,
-          marginRight: 8,
-        }}
-      />
-    );
+        <Spin
+          size="small"
+          style={{
+            marginLeft: 8,
+            marginRight: 8,
+          }}
+        />
+      );
   }
 }
 

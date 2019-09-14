@@ -25,11 +25,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
     req.cookies = new Cookies(req, res);
     //解析用户登录信息
-    req.userInfo = {};
-    if (req.cookies.get('userInfo')) {
+    req.userInfo = null; 
+    var cookieUserInfo = req.cookies.get('userInfo');
+    if (cookieUserInfo) {
         try {
-            req.userInfo = JSON.parse(req.cookies.get('userInfo'));
-            console.log('useCookies:', req.userInfo);
+            req.userInfo = JSON.parse(cookieUserInfo);
             //获取当前登录用户类型，是否是管理员
             User.findById(req.userInfo._id).then(function (userInfo) {
                 if (userInfo) {

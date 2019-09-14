@@ -4,6 +4,7 @@
 import ThemeColorReplacer from 'webpack-theme-color-replacer';
 import path from 'path';
 import generate from '@ant-design/colors/lib/generate';
+import MonacoWebpackPlugin from 'monaco-editor-webpack-plugin';
 
 function getModulePackageName(module) {
   if (!module.context) return null;

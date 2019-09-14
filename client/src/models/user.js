@@ -1,22 +1,32 @@
 import { routerRedux } from 'dva/router';
 import { stringify, parse } from 'qs';
 import { message } from 'antd';
-import { query as queryUsers, queryCurrent, postUserRegister, postUserLogin } from '@/services/user';
+import { postUserRegister, postUserLogin, getCurrentUser } from '@/services/user';
+import { getCookies, clearCookies } from '@/utils/brower';
 
 export function getPageQuery() {
   return parse(window.location.href.split('?')[1]);
 }
 
+export function initCurrentUser() {
+  const userInfo =getCookies('userInfo');
+  console.log('init---',userInfo);
+  if(userInfo){
+    return JSON.parse(userInfo);
+  }
+  return null;
+}
+
 const UserModel = {
   namespace: 'user',
   state: {
-    currentUser: {},
+  currentUser: initCurrentUser(),
   },
   effects: {
-    *fetch(_, { call, put }) {
-      const response = yield call(queryUsers);
+    *doCurrentUser({ payload }, { call, put }) {
+      const response = yield call(getCurrentUser,payload);
       yield put({
-        type: 'save',
+        type: 'saveCurrentUser',
         payload: response,
       });
     },
@@ -31,6 +41,10 @@ const UserModel = {
         yield put(routerRedux.push('/page/main'));
       }
       message.success(response.msg);
+      yield put({
+        type: 'saveCurrentUser',
+        payload: response.data,
+      });
     },
 
     * doUserLogin({ payload }, { call, put }) {
@@ -40,6 +54,10 @@ const UserModel = {
         yield put(routerRedux.push('/page/main'));
       }
       message.success(response.msg);
+      yield put({
+        type: 'saveCurrentUser',
+        payload: response.data,
+      });
     },
 
 
@@ -48,30 +66,20 @@ const UserModel = {
 
 
     *logout(_, { put }) {
-      const { redirect } = getPageQuery(); // redirect
-
-      if (window.location.pathname !== '/user/login' && !redirect) {
+      // const { redirect } = getPageQuery(); // redirect
+      // if (window.location.pathname !== '/user/login' && !redirect) {
         yield put(
           routerRedux.replace({
-            pathname: '/user/login',
+            pathname: '/page/user/login',
             search: stringify({
               redirect: window.location.href,
             }),
           }),
         );
-      }
+        clearCookies();
+      // }
     },
 
-
-
-
-    *fetchCurrent(_, { call, put }) {
-      const response = yield call(queryCurrent);
-      yield put({
-        type: 'saveCurrentUser',
-        payload: response,
-      });
-    },
   },
   reducers: {
 
@@ -79,8 +87,8 @@ const UserModel = {
       return { ...state, status: payload.status, type: payload.type };
     },
 
-    saveCurrentUser(state, action) {
-      return { ...state, currentUser: action.payload || {} };
+    saveCurrentUser(state, {payload}) {
+      return { ...state, currentUser: payload };
     },
 
     changeNotifyCount(
@@ -92,7 +100,7 @@ const UserModel = {
       return {
         ...state,
         currentUser: {
-          ...state.currentUser,
+          ...state.userInfo,
           notifyCount: action.payload.totalCount,
           unreadCount: action.payload.unreadCount,
         },

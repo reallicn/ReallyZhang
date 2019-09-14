@@ -1,6 +1,6 @@
 import request from '@/utils/request';
 
-export async function query() {
+export async function getCurrentUser() {
   return request('/api/users');
 }
 export async function queryCurrent() {
@@ -12,6 +12,7 @@ export async function queryNotices() {
 
 
 export async function postUserLogin(data) {
+
   return request('/api/user/login',{
     requestType: 'form',
     method:'POST',
@@ -26,4 +27,17 @@ export async function postUserRegister(data) {
     method:'POST',
     data
   });
+}
+
+
+export async function postPublishBlog(data) {
+  return request('/api/blog/publish',{
+    requestType: 'form',
+    method:'POST',
+    data
+  });
+}
+
+export async function getBlogList(data) {
+  return request('/api/blog/list',{params:data});
 }
