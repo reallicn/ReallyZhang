@@ -1,15 +1,22 @@
 import { message } from 'antd';
-import { postPublishBlog, getBlogList } from '@/services/user';
+import { postPublishBlog, getBlogList, getBlogById } from '@/services/user';
 
 
 const UserModel = {
   namespace: 'blog',
   state: {
     blogList: [],
-
+    blogDetail:{}
   },
   effects: {
 
+    *doGetBlogById({ payload }, { call , put}) {
+      const response = yield call(getBlogById,payload);
+      yield put({
+        type: 'saveBlogDetail',
+        payload: response.data
+      });
+    },
 
     *doGetList({ payload }, { call , put}) {
       const response = yield call(getBlogList,payload);
@@ -27,6 +34,13 @@ const UserModel = {
  
   },
   reducers: {
+
+    saveBlogDetail(state, {payload}){
+      return {
+        ...state,
+        blogDetail:payload
+      };
+    },
 
     saveBlogList(state, {payload}) {
       const {blogList=[]}=state;

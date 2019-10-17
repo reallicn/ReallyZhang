@@ -25,7 +25,7 @@ module.exports=new mongoose.Schema({
     },
     read:{
         type:Number,
-        default:0
+        default:1
     },
     title:String,
     description:{
@@ -45,7 +45,5 @@ module.exports=new mongoose.Schema({
         type:String,
         default:''
     },
-
     
-
 });

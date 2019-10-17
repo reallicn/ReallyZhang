@@ -39,7 +39,7 @@ class Write extends Component {
         title,
         content,
         short:content.substr(0,100),
-        face:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567965131177&di=828101e60d553f2bcfe4aae901cf3b32&imgtype=0&src=http%3A%2F%2Fimg2.ph.126.net%2FSlLKQng7FwONu4Gc7840dw%3D%3D%2F6631757159491304852.jpg',
+        face:'https://static001.infoq.cn/resource/image/7b/ef/7b369061e70df3e377203ef7ebd535ef.jpg?x-oss-process=image/crop,x_30,w_1187,h_880/resize,w_420,h_312',
         categoryId:'5d748159ddd1fa142cb524c6' // 技术 , 生活 5d74816dddd1fa142cb524c7
       }
     });

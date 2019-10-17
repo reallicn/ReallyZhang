@@ -4,7 +4,6 @@ export default {
   namespace: 'home',
   state: {
     carouselList:[],
-
   },
   effects: {
     * getCarouselList({ payload }, { call,put }){
@@ -17,7 +16,7 @@ export default {
   },
   reducers: {
     changeCarouselList(state,{payload}){
-      console.log('001',payload);
+      // console.log('001',payload);
       return {
         ...state,
         carouselList:payload

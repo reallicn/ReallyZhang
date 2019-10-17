@@ -38,7 +38,7 @@ class Blog extends Component {
 
     const hotTags = ['css样式', 'HTMl', 'Node', 'React', 'js', 'Android', 'ios', 'css样式', 'HTMl', 'Node', 'React', 'js', 'Android', 'ios']
     return (
-      <div className={styles.Home}>
+      <div className={styles.Blog}>
         {/* <div className={styles.carousel}>
                     <Carousel autoplay beforeChange={this.beforeCarouselChange} dotPosition='left'>
                         {

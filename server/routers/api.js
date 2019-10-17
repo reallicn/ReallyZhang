@@ -272,34 +272,57 @@ router.post('/blog/publish', function (req, res, next) {
 });
 
 /**
+ * 拉取文章by id
+ */
+router.get('/blog/id', function (req, res, next) {
+
+
+    var id = req.query.id;
+    Blog.findById(id)
+        .populate(['userId', 'categoryId'])
+        .then(function (blog) {
+            if(blog){
+                responseData.msg = '文章获取成功';
+                responseData.data = blog;
+                res.json(responseData);
+                return;
+            }
+            responseData.code = 2;
+            responseData.msg = '文章不存在';
+            res.json(responseData);
+        });
+
+});
+
+/**
  * 拉取文章列表
  */
 router.get('/blog/list', function (req, res, next) {
 
 
-    var page=Number(req.query.page || 1);
-    var limit =Number(req.query.pageSize || 10);
-    var skip=(page-1)*limit;
-    var pages =0;
+    var page = Number(req.query.page || 1);
+    var limit = Number(req.query.pageSize || 10);
+    var skip = (page - 1) * limit;
+    var pages = 0;
     Blog.countDocuments().then(function (count) {
         //计算总页数:向上取整
-        pages=Math.ceil(count/limit);
+        pages = Math.ceil(count / limit);
         //取值不能超过总页数pages,不能小于1
-        page=Math.min(page,pages);
-        page=Math.max(page,1);
+        page = Math.min(page, pages);
+        page = Math.max(page, 1);
         // 读取所有用户
         Blog.find()
-            .populate(['userId','categoryId'])
+            .populate(['userId', 'categoryId'])
             .limit(limit)
             .skip(skip)
             .then(function (blogs) {
                 responseData.msg = '文章列表获取成功';
                 responseData.data = {
-                    total:count, //总条数
-                    pageSize:limit, //每页数
-                    pages:pages, //总页数
-                    page:page, //当前页
-                    list:blogs
+                    total: count, //总条数
+                    pageSize: limit, //每页数
+                    pages: pages, //总页数
+                    page: page, //当前页
+                    list: blogs
                 };
                 res.json(responseData);
             });

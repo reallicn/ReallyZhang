@@ -60,7 +60,7 @@ class Home extends Component {
               blogList.map(item => {
                 return (
                   <div style={{textAlign:'center'}} key={item.id}>
-                    <img style={{maxWidth:'100%',maxHeight:420,margin:'0 auto'}} src={item.face || 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567965131177&di=828101e60d553f2bcfe4aae901cf3b32&imgtype=0&src=http%3A%2F%2Fimg2.ph.126.net%2FSlLKQng7FwONu4Gc7840dw%3D%3D%2F6631757159491304852.jpg'} alt="img" />
+                    <img style={{maxWidth:'100%',maxHeight:420,margin:'0 auto'}} src={item.face || 'https://static001.infoq.cn/resource/image/7b/ef/7b369061e70df3e377203ef7ebd535ef.jpg?x-oss-process=image/crop,x_30,w_1187,h_880/resize,w_420,h_312'} alt="img" />
                   </div>
                 );
               })
@@ -81,7 +81,7 @@ class Home extends Component {
                 <div><Icon type="eye" />{currentCalousel.read}</div>
               </div>
               <p className={styles.acticleDetail}>{currentCalousel.short}</p>
-              <Button type="primary">阅读全文</Button>
+              <Button href={`/page/main/blog/detail/${currentCalousel._id}`} type="primary">阅读全文</Button>
             </div>
           }
         </div>

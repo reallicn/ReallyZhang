@@ -41,3 +41,7 @@ export async function postPublishBlog(data) {
 export async function getBlogList(data) {
   return request('/api/blog/list',{params:data});
 }
+
+export async function getBlogById(data) {
+  return request('/api/blog/id',{params:data});
+}

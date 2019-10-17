@@ -65,6 +65,7 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.8.6",
+    "react-markdown": "^4.2.2",
     "react-media": "^1.9.2",
     "react-media-hook2": "^1.0.5",
     "slash2": "^2.0.0",
