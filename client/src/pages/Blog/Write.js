@@ -40,7 +40,7 @@ class Write extends Component {
         content,
         short:content.substr(0,100),
         face:'https://static001.infoq.cn/resource/image/7b/ef/7b369061e70df3e377203ef7ebd535ef.jpg?x-oss-process=image/crop,x_30,w_1187,h_880/resize,w_420,h_312',
-        categoryId:'5d748159ddd1fa142cb524c6' // 技术 , 生活 5d74816dddd1fa142cb524c7
+        categoryId:'5d748159ddd1fa142cb524c6' // 技术 
       }
     });
 

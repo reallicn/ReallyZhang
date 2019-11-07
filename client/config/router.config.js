@@ -46,36 +46,36 @@ export default [
       },
       {
         path: '/page/main/home',
-        name: '首页',
+        name: '博客',
         component: './Home',
       },
-      {
-        path: '/page/main/blog',
-        name: '技术博客',
-        component: './Blog',
-      },
+      // {
+      //   path: '/page/main/blog',
+      //   name: '博客',
+      //   component: './Blog',
+      // },
       {
         path: '/page/main/blog/detail/:id',
         component: './Blog/Detail',
       },
       {
         path: '/page/main/idea',
-        name: '创意共享',
+        name: '痛点',
         component: './Idea',
       },
       {
         path: '/page/main/pdf',
-        name: 'PDF阅读',
+        name: '阅读',
         component: './Pdf',
       },
       {
         path: '/page/main/video',
-        name: '视频教程',
+        name: '视频',
         component: './Video',
       },
       {
         path: '/page/main/real',
-        name: '生活真相',
+        name: '生活',
         component: './Real',
       },
       {

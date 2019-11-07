@@ -1,5 +1,6 @@
 import { message } from 'antd';
 import { postPublishBlog, getBlogList, getBlogById } from '@/services/user';
+import { routerRedux } from 'dva/router';
 
 
 const UserModel = {
@@ -27,9 +28,12 @@ const UserModel = {
     },
 
 
-    *doPublish({ payload }, { call }) {
+    *doPublish({ payload }, { call,put }) {
       const response = yield call(postPublishBlog,payload);
-      message.success(response.msg);
+      if(response.code === 0){
+        yield put(routerRedux.push('/page/main'));
+      }
+      message.success(response.msg+'22');
     },
  
   },
